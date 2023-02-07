@@ -12,7 +12,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import { UserService } from './services/user.service';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { UserService } from './services/user.service';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatTableModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [UserService],
   bootstrap: [AppComponent],

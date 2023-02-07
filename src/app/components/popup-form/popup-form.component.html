@@ -43,7 +43,13 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Телефон, привязанных к мессенджеру</mat-label>
-      <input class="form-input" matInput formControlName="phoneNumber" />
+      <input
+        class="form-input"
+        matInput
+        formControlName="phoneNumber"
+        mask="(000) 000 00 00"
+        prefix="+7"
+      />
     </mat-form-field>
     <button
       mat-raised-button

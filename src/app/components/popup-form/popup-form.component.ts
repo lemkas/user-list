@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { IUser, POSITIONS } from 'src/app/models/user';
+import { IUser, IUserCreateForm, POSITIONS } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./popup-form.component.scss'],
 })
 export class PopupFormComponent implements OnInit {
-  createForm!: FormGroup<IUser>;
+  createForm!: FormGroup<IUserCreateForm>;
   positions: POSITIONS[] = this.userService.getPositions();
 
   constructor(
@@ -43,12 +43,13 @@ export class PopupFormComponent implements OnInit {
         ],
       ], // Строчные и прописные латинские буквы, цифры
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required]],
+      phoneNumber: ['+7', [Validators.required]],
       position: ['', Validators.required],
     });
   }
 
   submitForm(): void {
-    console.log(this.createForm.value);
+    this.userService.createUser(this.createForm.value);
+    this.dialog.closeAll();
   }
 }
