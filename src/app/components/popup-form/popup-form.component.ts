@@ -1,15 +1,54 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { IUser, POSITIONS } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-popup-form',
   templateUrl: './popup-form.component.html',
-  styleUrls: ['./popup-form.component.scss']
+  styleUrls: ['./popup-form.component.scss'],
 })
 export class PopupFormComponent implements OnInit {
+  createForm!: FormGroup<IUser>;
+  positions: POSITIONS[] = this.userService.getPositions();
 
-  constructor() { }
-
+  constructor(
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private userService: UserService
+  ) {}
   ngOnInit(): void {
+    this.initForm();
   }
 
+  initForm(): void {
+    this.createForm = this.fb.nonNullable.group({
+      registrationDate: ['', Validators.required],
+      fio: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(256),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(256),
+          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/),
+        ],
+      ], // Строчные и прописные латинские буквы, цифры
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required]],
+      position: ['', Validators.required],
+    });
+  }
+
+  submitForm(): void {
+    console.log(this.createForm.value);
+  }
 }

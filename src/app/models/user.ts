@@ -1,13 +1,15 @@
+import { FormControl } from '@angular/forms';
+
 export interface IUser {
-  registrationDate: string;
-  fio: string;
-  position: POSITIONS;
-  email: string;
-  password: string;
-  phoneNumber: string;
+  registrationDate: FormControl<string>;
+  fio: FormControl<string>;
+  position: FormControl<string>;
+  email: FormControl<string>;
+  password: FormControl<string>;
+  phoneNumber: FormControl<string>;
 }
 
-enum POSITIONS {
+export enum POSITIONS {
   EXTERNAL_EXPERT = 'Внешний эксперт',
   HRBR = 'HR BR',
   DEVELOPER = 'Разработчик',

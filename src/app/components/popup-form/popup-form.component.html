@@ -1,1 +1,57 @@
-<p>popup-form works!</p>
+<div class="popup">
+  <h3>Добавление данных о экспертах по оценке и руководителей</h3>
+  <form class="form" [formGroup]="createForm" autocomplete="off">
+    <mat-form-field>
+      <mat-label>Дата регистрации</mat-label>
+      <input
+        class="form-input"
+        type="date"
+        matInput
+        formControlName="registrationDate"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>ФИО</mat-label>
+      <input class="form-input" matInput formControlName="fio" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Должность</mat-label>
+      <mat-select formControlName="position">
+        <mat-option *ngFor="let position of positions" value="position">
+          {{ position }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Почта (логин)</mat-label>
+      <input
+        class="form-input"
+        autocomplete="off"
+        matInput
+        formControlName="email"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Пароль</mat-label>
+      <input
+        class="form-input"
+        autocomplete="off"
+        type="password"
+        matInput
+        formControlName="password"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Телефон, привязанных к мессенджеру</mat-label>
+      <input class="form-input" matInput formControlName="phoneNumber" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="!createForm.valid"
+      (click)="submitForm()"
+    >
+      Создать пользователя
+    </button>
+  </form>
+</div>
