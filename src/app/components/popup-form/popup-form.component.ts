@@ -49,7 +49,9 @@ export class PopupFormComponent implements OnInit {
   }
 
   submitForm(): void {
-    this.userService.createUser(this.createForm.value);
-    this.dialog.closeAll();
+    setTimeout(() => {
+      this.userService.createUser(this.createForm.value);
+      this.dialog.closeAll();
+    }, 1000);
   }
 }

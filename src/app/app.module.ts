@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserService } from './services/user.service';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -35,6 +36,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MatInputModule,
     MatSelectModule,
     MatTableModule,
+    MatProgressSpinnerModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [UserService],

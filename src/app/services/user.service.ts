@@ -22,6 +22,22 @@ export class UserService {
       password: 'LE2342',
       phoneNumber: '+79999851404',
     },
+    {
+      registrationDate: '2022-02-01',
+      fio: 'Лемов Никита',
+      position: 'Разработчик',
+      email: 'lemov@mail.ru',
+      password: 'LE2342',
+      phoneNumber: '+79999851404',
+    },
+    {
+      registrationDate: '2022-02-01',
+      fio: 'Лемов Никита',
+      position: 'Разработчик',
+      email: 'lemov@mail.ru',
+      password: 'LE2342',
+      phoneNumber: '+79999851404',
+    },
   ];
   constructor() {}
 

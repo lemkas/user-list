@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTable } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';

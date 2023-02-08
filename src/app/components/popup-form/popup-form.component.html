@@ -17,7 +17,7 @@
     <mat-form-field>
       <mat-label>Должность</mat-label>
       <mat-select formControlName="position">
-        <mat-option *ngFor="let position of positions" value="position">
+        <mat-option *ngFor="let position of positions" [value]="position">
           {{ position }}
         </mat-option>
       </mat-select>
