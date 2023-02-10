@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, takeWhile, interval } from 'rxjs';
+import { IFilterForm } from '../models/filter';
 import { IUser, IUserCreateForm, POSITIONS } from '../models/user';
 
 @Injectable({
@@ -45,12 +46,13 @@ export class UserService {
     return this.positions;
   }
 
-  createUser(user: any) {
+  createUser(user: Partial<any>) {
     this.users.push(user);
     console.log(this.users);
   }
 
-  getUsers(): Observable<[]> {
+  getUsers(filter?: any): Observable<IUser[]> {
+    console.log(filter);
     return interval(1000).pipe(
       takeWhile(() => true),
       map(() => this.users)

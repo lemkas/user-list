@@ -1,1 +1,14 @@
-<p>filter works!</p>
+<form [formGroup]="filterForm" (submit)="submitForm()" class="form-filter">
+  <mat-form-field>
+    <mat-label>Поиск по ФИО</mat-label>
+    <input matInput formControlName="fio" />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    class="filter-button"
+    color="primary"
+    [disabled]="!filterForm.valid"
+  >
+    Поиск
+  </button>
+</form>

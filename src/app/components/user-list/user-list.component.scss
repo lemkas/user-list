@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.user-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .table {
   width: 100%;
 }
@@ -9,4 +14,10 @@
 th {
   padding: 0px 30px;
   align-items: center;
+}
+
+.create-button {
+  width: 200px;
+  margin-top: 20px;
+  align-self: self-end;
 }

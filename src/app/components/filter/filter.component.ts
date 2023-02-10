@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { IFilterForm } from 'src/app/models/filter';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
-
-  constructor() { }
+  filterForm!: FormGroup<IFilterForm>;
+  @Output() filterHandler = new EventEmitter();
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.initForm();
   }
 
+  initForm(): void {
+    this.filterForm = this.fb.nonNullable.group({
+      fio: '',
+    });
+  }
+
+  submitForm(): void {
+    this.filterHandler.emit(this.filterForm.value);
+  }
 }
