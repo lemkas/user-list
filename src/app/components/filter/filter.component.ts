@@ -27,6 +27,7 @@ export class FilterComponent implements OnInit {
   }
 
   change(event: any): void {
+    console.log(event.length);
     if (!event.length) this.filterHandler.emit(this.filterForm.value);
   }
 }

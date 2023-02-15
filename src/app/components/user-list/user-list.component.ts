@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
 import { IFilter } from 'src/app/models/filter';
 import { IUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -23,13 +22,8 @@ export class UserListComponent implements OnInit {
     'password',
     'phoneNumber',
   ];
-  private subscription!: Subscription;
   ngOnInit(): void {
     this.getUsers();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   getUsers() {
@@ -43,7 +37,7 @@ export class UserListComponent implements OnInit {
     let val = filter.fio;
     if (val) {
       this.users = this.users.filter((user: IUser) => {
-        return user.fio.toLowerCase().includes(val);
+        return user.fio.toLowerCase().includes(val.toLowerCase());
       });
     } else {
       this.users = this.userService.users;

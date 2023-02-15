@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, takeWhile, interval } from 'rxjs';
-import { IUser, IUserCreateForm, POSITIONS } from '../models/user';
+// import { Observable, map, takeWhile, interval } from 'rxjs';
+import { POSITIONS } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -49,10 +49,10 @@ export class UserService {
     this.users.push(user);
   }
 
-  getUsers(): Observable<IUser[]> {
-    return interval(1000).pipe(
-      takeWhile(() => true),
-      map(() => this.users)
-    );
-  }
+  // getUsers(): Observable<IUser[]> {
+  //   return interval(1000).pipe(
+  //     takeWhile(() => true),
+  //     map(() => this.users)
+  //   );
+  // }
 }
