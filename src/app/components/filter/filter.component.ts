@@ -25,4 +25,8 @@ export class FilterComponent implements OnInit {
   submitForm(): void {
     this.filterHandler.emit(this.filterForm.value);
   }
+
+  change(event: any): void {
+    if (!event.length) this.filterHandler.emit(this.filterForm.value);
+  }
 }

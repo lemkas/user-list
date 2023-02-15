@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { IFilter, IFilterForm } from 'src/app/models/filter';
+import { IFilter } from 'src/app/models/filter';
 import { IUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { PopupFormComponent } from '../popup-form/popup-form.component';
@@ -25,28 +25,28 @@ export class UserListComponent implements OnInit {
   ];
   private subscription!: Subscription;
   ngOnInit(): void {
-    this.getUsers(this.filter);
+    this.getUsers();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  getUsers(filter?: IFilter) {
-    this.subscription = this.userService.getUsers(filter).subscribe((value) => {
-      if (filter?.fio) {
-        this.users = value.filter((user) => user.fio === filter.fio);
-      } else {
-        this.users = [...value];
-      }
-    });
+  getUsers() {
+    this.users = this.userService.users;
   }
   openForm() {
     this.dialog.open(PopupFormComponent);
   }
 
   getFilter(filter: IFilter) {
-    this.filter = filter;
-    console.log(filter);
+    let val = filter.fio;
+    if (val) {
+      this.users = this.users.filter((user: IUser) => {
+        return user.fio.toLowerCase().includes(val);
+      });
+    } else {
+      this.users = this.userService.users;
+    }
   }
 }

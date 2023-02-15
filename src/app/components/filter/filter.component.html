@@ -1,7 +1,7 @@
 <form [formGroup]="filterForm" (submit)="submitForm()" class="form-filter">
   <mat-form-field>
     <mat-label>Поиск по ФИО</mat-label>
-    <input matInput formControlName="fio" />
+    <input matInput formControlName="fio" (change)="change($event)" />
   </mat-form-field>
   <button
     mat-raised-button
