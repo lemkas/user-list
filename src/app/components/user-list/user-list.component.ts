@@ -26,14 +26,14 @@ export class UserListComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers(): void {
+  private getUsers(): void {
     this.users = this.userService.users;
   }
   openForm(): void {
     this.dialog.open(PopupFormComponent);
   }
 
-  refresh() {
+  refresh(): void {
     this.users = this.userService.users;
     console.log(this.users, 'из компоненты');
     console.log(this.userService.users, 'из сервиса');
