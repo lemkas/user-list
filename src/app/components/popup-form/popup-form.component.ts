@@ -48,10 +48,16 @@ export class PopupFormComponent implements OnInit {
     });
   }
 
+  private preparePhone(): void {
+    const code: string = '+7';
+    const phoneNumberControl = this.createForm.get('phoneNumber');
+    phoneNumberControl?.setValue(code + phoneNumberControl.value);
+  }
+
   submitForm(): void {
-    setTimeout(() => {
-      this.userService.createUser(this.createForm.value);
-      this.dialog.closeAll();
-    }, 1000);
+    this.preparePhone();
+    this.userService.createUser(this.createForm.value);
+    this.userService.activateChangeFlag();
+    this.dialog.closeAll();
   }
 }

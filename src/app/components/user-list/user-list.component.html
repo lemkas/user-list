@@ -40,12 +40,17 @@
     <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
     <tr mat-row *matRowDef="let row; columns: tableHeaders"></tr>
   </table>
-  <button
-    mat-raised-button
-    class="create-button"
-    color="accent"
-    (click)="openForm()"
-  >
-    Создать пользователя
-  </button>
+  <div class="buttons-board">
+    <i (click)="refresh()" class="refresh-button"
+      ><img src="../../../assets/refresh.svg"
+    /></i>
+    <button
+      mat-raised-button
+      class="create-button"
+      color="accent"
+      (click)="openForm()"
+    >
+      Создать пользователя
+    </button>
+  </div>
 </div>

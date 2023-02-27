@@ -5,10 +5,11 @@
 .user-list {
   display: flex;
   flex-direction: column;
+  width: 1000px;
 }
 
 .table {
-  width: 100%;
+  min-width: 100%;
 }
 
 th {
@@ -16,8 +17,17 @@ th {
   align-items: center;
 }
 
+.buttons-board {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: baseline;
+}
+
+.refresh-button {
+  cursor: pointer;
+}
+
 .create-button {
   width: 200px;
-  margin-top: 20px;
-  align-self: self-end;
 }

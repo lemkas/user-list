@@ -13,7 +13,6 @@ import { PopupFormComponent } from '../popup-form/popup-form.component';
 export class UserListComponent implements OnInit {
   constructor(private dialog: MatDialog, private userService: UserService) {}
   users: IUser[] = [];
-  filter!: any;
   tableHeaders: string[] = [
     'registrationDate',
     'fio',
@@ -22,18 +21,25 @@ export class UserListComponent implements OnInit {
     'password',
     'phoneNumber',
   ];
+
   ngOnInit(): void {
     this.getUsers();
   }
 
-  getUsers() {
+  getUsers(): void {
     this.users = this.userService.users;
   }
-  openForm() {
+  openForm(): void {
     this.dialog.open(PopupFormComponent);
   }
 
-  getFilter(filter: IFilter) {
+  refresh() {
+    this.users = this.userService.users;
+    console.log(this.users, 'из компоненты');
+    console.log(this.userService.users, 'из сервиса');
+  }
+
+  getFilter(filter: IFilter): void {
     let val = filter.fio;
     if (val) {
       this.users = this.users.filter((user: IUser) => {

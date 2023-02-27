@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-// import { Observable, map, takeWhile, interval } from 'rxjs';
-import { POSITIONS } from '../models/user';
+import { interval, map, Observable, takeWhile } from 'rxjs';
+
+import { IUser, POSITIONS } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,9 @@ export class UserService {
       phoneNumber: '+79999851404',
     },
   ];
+
+  private changeFlag: boolean = false;
+
   constructor() {}
 
   getPositions(): POSITIONS[] {
@@ -49,10 +53,17 @@ export class UserService {
     this.users.push(user);
   }
 
-  // getUsers(): Observable<IUser[]> {
-  //   return interval(1000).pipe(
-  //     takeWhile(() => true),
-  //     map(() => this.users)
-  //   );
-  // }
+  activateChangeFlag() {
+    this.changeFlag = true;
+    setTimeout(() => {
+      this.changeFlag = false;
+    }, 1000);
+  }
+
+  getChangeFlag(): Observable<Boolean> {
+    return interval(1500).pipe(
+      takeWhile(() => true),
+      map(() => this.changeFlag)
+    );
+  }
 }
