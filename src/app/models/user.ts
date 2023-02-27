@@ -10,7 +10,6 @@ export interface IUserCreateForm {
 }
 
 export interface IUser {
-  // id: string;
   registrationDate: string;
   fio: string;
   position: POSITIONS;
