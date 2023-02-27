@@ -45,7 +45,7 @@ export class UserService {
     return this.positions;
   }
 
-  createUser(user: Partial<any>) {
+  createUser(user: Partial<any>): void {
     this.users.push(user);
   }
 }

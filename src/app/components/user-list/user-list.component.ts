@@ -34,7 +34,7 @@ export class UserListComponent implements OnInit {
   }
 
   refresh(): void {
-    this.users = this.userService.users;
+    this.users = [...this.userService.users];
     console.log(this.users, 'из компоненты');
     console.log(this.userService.users, 'из сервиса');
   }
