@@ -1,6 +1,7 @@
 import { FormControl } from '@angular/forms';
 
 export interface IUserCreateForm {
+  id: FormControl<string>;
   registrationDate: FormControl<string>;
   fio: FormControl<string>;
   position: FormControl<string>;

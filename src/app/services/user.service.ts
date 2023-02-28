@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { POSITIONS } from '../models/user';
+import { IUser, IUserCreateForm, POSITIONS } from '../models/user';
 
 @Injectable({
   providedIn: 'root',

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { IUser, IUserCreateForm, POSITIONS } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-popup-form',
@@ -24,6 +25,7 @@ export class PopupFormComponent implements OnInit {
 
   initForm(): void {
     this.createForm = this.fb.nonNullable.group({
+      id: UUID.UUID(),
       registrationDate: ['', Validators.required],
       fio: [
         '',
@@ -58,5 +60,6 @@ export class PopupFormComponent implements OnInit {
     this.preparePhone();
     this.userService.createUser(this.createForm.value);
     this.dialog.closeAll();
+    console.log(this.createForm.value);
   }
 }
