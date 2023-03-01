@@ -18,12 +18,12 @@ export class ConfirmDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  confirmDelete() {
+  confirmDelete(): void {
     this.userService.deleteUser(this.data.id);
     this.dialog.closeAll();
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialog.closeAll();
   }
 }

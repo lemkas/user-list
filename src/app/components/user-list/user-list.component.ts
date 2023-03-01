@@ -52,7 +52,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  deleteUser(row: IUser) {
+  deleteUser(row: IUser): void {
     let dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: row,
     });
