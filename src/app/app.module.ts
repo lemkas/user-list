@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserService } from './services/user.service';
 import { NgxMaskModule } from 'ngx-mask';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NgxMaskModule } from 'ngx-mask';
     FilterComponent,
     UserListComponent,
     PopupFormComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

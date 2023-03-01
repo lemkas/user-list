@@ -12,7 +12,7 @@ export class UserService {
     POSITIONS.QA,
   ];
 
-  public users: any[] = [
+  public users: Array<IUser | any> = [
     {
       id: '57438',
       registrationDate: '2022-02-01',
@@ -52,18 +52,14 @@ export class UserService {
     this.users.push(user);
   }
 
-  // deleteUser(id: string): string | any[]{
-  //   if(id) {
-  //     return this.users.filter((id) => this.users.id !== id)
-  //   } else {
-  //     return `Пользователь c id ${id} не найден`
-  //   }
-  // }
+  deleteUser(id: string) {
+    this.users = this.users.filter((user) => user.id !== id);
+  }
 
-  // updateUser(editedUser: Partial<any>) {
-  //   const oldUserIndex = this.users.findIndex(
-  //     (user) => user.id === editedUser['id']
-  //   );
-  //   this.users[oldUserIndex] = editedUser;
-  // }
+  updateUser(editedUser: Partial<any>) {
+    const oldUserIndex = this.users.findIndex(
+      (user) => user.id === editedUser['id']
+    );
+    this.users[oldUserIndex] = editedUser;
+  }
 }

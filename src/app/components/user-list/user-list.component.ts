@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { IFilter } from 'src/app/models/filter';
 import { IUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { PopupFormComponent } from '../popup-form/popup-form.component';
 
 @Component({
@@ -13,7 +14,6 @@ import { PopupFormComponent } from '../popup-form/popup-form.component';
 export class UserListComponent implements OnInit {
   constructor(private dialog: MatDialog, private userService: UserService) {}
   users: IUser[] = [];
-  // showCrudButtons: boolean = false
   tableHeaders: string[] = [
     'registrationDate',
     'fio',
@@ -21,6 +21,7 @@ export class UserListComponent implements OnInit {
     'email',
     'password',
     'phoneNumber',
+    'actions',
   ];
 
   ngOnInit(): void {
@@ -31,16 +32,33 @@ export class UserListComponent implements OnInit {
     this.users = this.userService.users;
   }
   openForm(): void {
-    this.dialog.open(PopupFormComponent);
+    let dialogRef = this.dialog.open(PopupFormComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.refresh();
+    });
   }
 
   refresh(): void {
     this.users = [...this.userService.users];
   }
 
-  openEditForm(row: IUser) {
-    this.dialog.open(PopupFormComponent, {
+  openEditForm(row: IUser): void {
+    let dialogRef = this.dialog.open(PopupFormComponent, {
       data: row,
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.refresh();
+    });
+  }
+
+  deleteUser(row: IUser) {
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: row,
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.refresh();
     });
   }
 

@@ -36,7 +36,6 @@
       <input
         class="form-input"
         autocomplete="off"
-        type="password"
         matInput
         formControlName="password"
       />
@@ -64,7 +63,7 @@
       mat-raised-button
       color="accent"
       [disabled]="!createForm.valid"
-      (click)="submitForm()"
+      (click)="submitEditForm()"
       *ngIf="this.data"
     >
       Обновить данные пользователя

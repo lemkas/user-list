@@ -27,10 +27,13 @@ export class PopupFormComponent implements OnInit {
 
   initForm(): void {
     this.createForm = this.fb.nonNullable.group({
-      id: UUID.UUID(),
-      registrationDate: ['', Validators.required],
+      id: this.data ? this.data.id : UUID.UUID(),
+      registrationDate: [
+        this.data ? this.data.registrationDate : '',
+        Validators.required,
+      ],
       fio: [
-        '',
+        this.data ? this.data.fio : '',
         [
           Validators.required,
           Validators.minLength(6),
@@ -38,7 +41,7 @@ export class PopupFormComponent implements OnInit {
         ],
       ],
       password: [
-        '',
+        this.data ? this.data.password : '',
         [
           Validators.required,
           Validators.minLength(6),
@@ -46,9 +49,15 @@ export class PopupFormComponent implements OnInit {
           Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/),
         ],
       ], // Строчные и прописные латинские буквы, цифры
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['+7', [Validators.required]],
-      position: ['', Validators.required],
+      email: [
+        this.data ? this.data.email : '',
+        [Validators.required, Validators.email],
+      ],
+      phoneNumber: [
+        this.data ? this.data.phoneNumber : '',
+        [Validators.required],
+      ],
+      position: [this.data ? this.data.position : '', Validators.required],
     });
   }
 
@@ -63,5 +72,10 @@ export class PopupFormComponent implements OnInit {
     this.userService.createUser(this.createForm.value);
     this.dialog.closeAll();
     console.log(this.createForm.value);
+  }
+
+  submitEditForm(): void {
+    this.userService.updateUser(this.createForm.value);
+    this.dialog.closeAll();
   }
 }

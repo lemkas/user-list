@@ -31,18 +31,23 @@
     </ng-container>
 
     <ng-container matColumnDef="phoneNumber">
-      <th mat-header-cell *matHeaderCellDef>
-        Телефон, который привязан к мессенджеру
-      </th>
+      <th mat-header-cell *matHeaderCellDef>Телефон</th>
       <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Действия</th>
+      <td mat-cell *matCellDef="let row">
+        <i class="refresh-button" (click)="openEditForm(row)"
+          ><img src="../../../assets/edit.svg"
+        /></i>
+        <i class="refresh-button" (click)="deleteUser(row)"
+          ><img src="../../../assets/delete.svg"
+        /></i>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: tableHeaders"
-      (click)="openEditForm(row)"
-    ></tr>
+    <tr mat-row *matRowDef="let row; columns: tableHeaders"></tr>
   </table>
   <div class="buttons-board">
     <i (click)="refresh()" class="refresh-button"
