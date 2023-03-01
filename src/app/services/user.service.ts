@@ -14,6 +14,7 @@ export class UserService {
 
   public users: any[] = [
     {
+      id: '57438',
       registrationDate: '2022-02-01',
       fio: 'Лемов Никита',
       position: POSITIONS.DEVELOPER,
@@ -22,6 +23,7 @@ export class UserService {
       phoneNumber: '+79999851404',
     },
     {
+      id: '57433',
       registrationDate: '2022-02-01',
       fio: 'Лемов Никита',
       position: POSITIONS.DEVELOPER,
@@ -30,6 +32,7 @@ export class UserService {
       phoneNumber: '+79999851404',
     },
     {
+      id: '57432',
       registrationDate: '2022-02-01',
       fio: 'Антон Глов',
       position: POSITIONS.QA,
@@ -48,4 +51,19 @@ export class UserService {
   createUser(user: Partial<any>): void {
     this.users.push(user);
   }
+
+  // deleteUser(id: string): string | any[]{
+  //   if(id) {
+  //     return this.users.filter((id) => this.users.id !== id)
+  //   } else {
+  //     return `Пользователь c id ${id} не найден`
+  //   }
+  // }
+
+  // updateUser(editedUser: Partial<any>) {
+  //   const oldUserIndex = this.users.findIndex(
+  //     (user) => user.id === editedUser['id']
+  //   );
+  //   this.users[oldUserIndex] = editedUser;
+  // }
 }

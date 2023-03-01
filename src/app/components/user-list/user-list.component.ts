@@ -13,6 +13,7 @@ import { PopupFormComponent } from '../popup-form/popup-form.component';
 export class UserListComponent implements OnInit {
   constructor(private dialog: MatDialog, private userService: UserService) {}
   users: IUser[] = [];
+  // showCrudButtons: boolean = false
   tableHeaders: string[] = [
     'registrationDate',
     'fio',
@@ -35,6 +36,12 @@ export class UserListComponent implements OnInit {
 
   refresh(): void {
     this.users = [...this.userService.users];
+  }
+
+  openEditForm(row: IUser) {
+    this.dialog.open(PopupFormComponent, {
+      data: row,
+    });
   }
 
   getFilter(filter: IFilter): void {

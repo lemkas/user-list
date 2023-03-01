@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { IUser, IUserCreateForm, POSITIONS } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { UUID } from 'angular2-uuid';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-popup-form',
@@ -13,14 +14,15 @@ import { UUID } from 'angular2-uuid';
 export class PopupFormComponent implements OnInit {
   createForm!: FormGroup<IUserCreateForm>;
   positions: POSITIONS[] = this.userService.getPositions();
-
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: IUser,
     private fb: FormBuilder,
     private dialog: MatDialog,
     private userService: UserService
   ) {}
   ngOnInit(): void {
     this.initForm();
+    console.log(this.data);
   }
 
   initForm(): void {

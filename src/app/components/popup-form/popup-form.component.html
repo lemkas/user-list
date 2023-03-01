@@ -56,8 +56,18 @@
       color="accent"
       [disabled]="!createForm.valid"
       (click)="submitForm()"
+      *ngIf="!this.data"
     >
       Создать пользователя
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="!createForm.valid"
+      (click)="submitForm()"
+      *ngIf="this.data"
+    >
+      Обновить данные пользователя
     </button>
   </form>
 </div>
