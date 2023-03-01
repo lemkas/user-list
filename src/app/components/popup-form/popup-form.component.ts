@@ -64,7 +64,8 @@ export class PopupFormComponent implements OnInit {
   private preparePhone(): void {
     const code: string = '+7';
     const phoneNumberControl = this.createForm.get('phoneNumber');
-    phoneNumberControl?.setValue(code + phoneNumberControl.value);
+    if (!phoneNumberControl?.value.includes('+7'))
+      phoneNumberControl?.setValue(code + phoneNumberControl.value);
   }
 
   submitForm(): void {
