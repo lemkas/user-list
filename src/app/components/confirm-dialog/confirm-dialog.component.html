@@ -1,5 +1,27 @@
-<p>
-  Вы действительно хотите удалить пользователя <strong>{{ data.fio }}</strong>
-</p>
-<button mat-raised-button color="warn" (click)="confirmDelete()">Да</button>
-<button mat-raised-button color="accent" (click)="closeDialog()">Отмена</button>
+<div class="header">
+  <i class="close-button" (click)="closeDialog()"
+    ><img src="../../../assets/close.svg"
+  /></i>
+  <p c>
+    Вы действительно хотите удалить пользователя <strong>{{ data.fio }}</strong
+    >?
+  </p>
+</div>
+<div class="buttons">
+  <button
+    mat-raised-button
+    color="warn"
+    class="confirm-button"
+    (click)="confirmDelete()"
+  >
+    Да
+  </button>
+  <button
+    mat-raised-button
+    color="accent"
+    class="cancel-button"
+    (click)="closeDialog()"
+  >
+    Отмена
+  </button>
+</div>

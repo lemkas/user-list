@@ -1,7 +1,14 @@
 <div class="popup">
-  <h3>Добавление данных о экспертах по оценке и руководителей</h3>
+  <div class="popup-header">
+    <i class="close-button" (click)="closeDialog()"
+      ><img src="../../../assets/close.svg"
+    /></i>
+    <h3 class="popup-title">
+      {{ title }}
+    </h3>
+  </div>
   <form class="form" [formGroup]="createForm" autocomplete="off">
-    <mat-form-field>
+    <mat-form-field class="popup-input">
       <mat-label>Дата регистрации</mat-label>
       <input
         class="form-input"
@@ -10,11 +17,11 @@
         formControlName="registrationDate"
       />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="popup-input">
       <mat-label>ФИО</mat-label>
       <input class="form-input" matInput formControlName="fio" />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="popup-input">
       <mat-label>Должность</mat-label>
       <mat-select formControlName="position">
         <mat-option *ngFor="let position of positions" [value]="position">
@@ -22,7 +29,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="popup-input">
       <mat-label>Почта (логин)</mat-label>
       <input
         class="form-input"
@@ -31,7 +38,7 @@
         formControlName="email"
       />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="popup-input">
       <mat-label>Пароль</mat-label>
       <input
         class="form-input"
@@ -40,8 +47,8 @@
         formControlName="password"
       />
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Телефон, привязанных к мессенджеру</mat-label>
+    <mat-form-field class="popup-input">
+      <mat-label>Телефон, привязанный к мессенджеру</mat-label>
       <input
         class="form-input"
         matInput
@@ -52,6 +59,7 @@
     </mat-form-field>
     <button
       mat-raised-button
+      class="popup-button"
       color="accent"
       [disabled]="!createForm.valid"
       (click)="submitForm()"
@@ -61,6 +69,7 @@
     </button>
     <button
       mat-raised-button
+      class="popup-button"
       color="accent"
       [disabled]="!createForm.valid"
       (click)="submitEditForm()"

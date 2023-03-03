@@ -1,3 +1,20 @@
+.popup-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.close-button {
+  cursor: pointer;
+}
+
+.close-button {
+  align-self: end;
+}
+.popup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .popup-form {
   height: 1000px;
 }
@@ -8,6 +25,10 @@
   align-items: center;
 }
 
-.select {
-  width: 40%;
+.popup-input {
+  width: 400px;
+}
+
+.popup-button {
+  margin-top: 40px;
 }

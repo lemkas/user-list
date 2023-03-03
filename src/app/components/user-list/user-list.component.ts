@@ -31,20 +31,26 @@ export class UserListComponent implements OnInit {
   private getUsers(): void {
     this.users = this.userService.users;
   }
+
   openForm(): void {
-    let dialogRef = this.dialog.open(PopupFormComponent);
+    let dialogRef = this.dialog.open(PopupFormComponent, {
+      height: '610px',
+      width: '500px',
+    });
     dialogRef.afterClosed().subscribe(() => {
       this.refresh();
     });
   }
 
-  refresh(): void {
+  private refresh(): void {
     this.users = [...this.userService.users];
   }
 
   openEditForm(row: IUser): void {
     let dialogRef = this.dialog.open(PopupFormComponent, {
       data: row,
+      height: '610px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe(() => {
@@ -55,6 +61,8 @@ export class UserListComponent implements OnInit {
   deleteUser(row: IUser): void {
     let dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: row,
+      height: '160px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(() => {
@@ -68,6 +76,7 @@ export class UserListComponent implements OnInit {
       this.users = this.users.filter((user: IUser) => {
         return user.fio.toLowerCase().includes(val.toLowerCase());
       });
+      console.log(this.users.length);
     } else {
       this.users = this.userService.users;
     }

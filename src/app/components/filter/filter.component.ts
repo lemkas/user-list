@@ -16,7 +16,7 @@ export class FilterComponent implements OnInit {
     this.initForm();
   }
 
-  initForm(): void {
+  private initForm(): void {
     this.filterForm = this.fb.nonNullable.group({
       fio: '',
     });
@@ -27,7 +27,6 @@ export class FilterComponent implements OnInit {
   }
 
   change(event: any): void {
-    console.log(event.length);
     if (!event.length) this.filterHandler.emit(this.filterForm.value);
   }
 }

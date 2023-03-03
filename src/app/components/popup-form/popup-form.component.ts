@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { IUser, IUserCreateForm, POSITIONS } from 'src/app/models/user';
+import { IUser, POSITIONS } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { UUID } from 'angular2-uuid';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -12,8 +12,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./popup-form.component.scss'],
 })
 export class PopupFormComponent implements OnInit {
-  createForm!: FormGroup<IUserCreateForm>;
+  createForm!: FormGroup;
   positions: POSITIONS[] = this.userService.getPositions();
+  title!: string;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: IUser,
     private fb: FormBuilder,
@@ -21,11 +22,17 @@ export class PopupFormComponent implements OnInit {
     private userService: UserService
   ) {}
   ngOnInit(): void {
+    this.getHeaderText();
     this.initForm();
-    console.log(this.data);
   }
 
-  initForm(): void {
+  private getHeaderText(): void {
+    this.title = this.data
+      ? `Редактирование пользователя ${this.data.fio} `
+      : 'Добавление данных о экспертах по оценке и руководителей';
+  }
+
+  private initForm(): void {
     this.createForm = this.fb.nonNullable.group({
       id: this.data ? this.data.id : UUID.UUID(),
       registrationDate: [
@@ -78,6 +85,10 @@ export class PopupFormComponent implements OnInit {
   submitEditForm(): void {
     this.preparePhone();
     this.userService.updateUser(this.createForm.value);
+    this.dialog.closeAll();
+  }
+
+  closeDialog(): void {
     this.dialog.closeAll();
   }
 }

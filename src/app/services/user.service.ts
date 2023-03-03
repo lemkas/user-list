@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IUser, IUserCreateForm, POSITIONS } from '../models/user';
+import { IUser, POSITIONS } from '../models/user';
+import { data } from '../data/users';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class UserService {
   private positions: POSITIONS[] = [
     POSITIONS.EXTERNAL_EXPERT,
@@ -12,35 +10,7 @@ export class UserService {
     POSITIONS.QA,
   ];
 
-  public users: Array<IUser | any> = [
-    {
-      id: '57438',
-      registrationDate: '2022-02-01',
-      fio: 'Лемов Никита',
-      position: POSITIONS.DEVELOPER,
-      email: 'lemov@mail.ru',
-      password: 'LE2342',
-      phoneNumber: '+79999851404',
-    },
-    {
-      id: '57433',
-      registrationDate: '2022-02-01',
-      fio: 'Лемов Никита',
-      position: POSITIONS.DEVELOPER,
-      email: 'lemov@mail.ru',
-      password: 'LE2342',
-      phoneNumber: '+79999851404',
-    },
-    {
-      id: '57432',
-      registrationDate: '2022-02-01',
-      fio: 'Антон Глов',
-      position: POSITIONS.QA,
-      email: 'lemov@mail.ru',
-      password: 'LE2342',
-      phoneNumber: '+79999851404',
-    },
-  ];
+  users: Array<IUser> = data;
 
   constructor() {}
 
@@ -48,17 +18,17 @@ export class UserService {
     return this.positions;
   }
 
-  createUser(user: Partial<any>): void {
+  createUser(user: IUser): void {
     this.users.push(user);
   }
 
   deleteUser(id: string) {
-    this.users = this.users.filter((user) => user.id !== id);
+    this.users = this.users.filter((user: IUser) => user.id !== id);
   }
 
-  updateUser(editedUser: Partial<any>) {
+  updateUser(editedUser: IUser) {
     const oldUserIndex = this.users.findIndex(
-      (user) => user.id === editedUser['id']
+      (user: IUser) => user.id === editedUser['id']
     );
     this.users[oldUserIndex] = editedUser;
   }

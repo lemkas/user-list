@@ -9,8 +9,13 @@
   width: 1000px;
 }
 
+.user-list-filter {
+  display: flex;
+  justify-content: center;
+}
+
 .table {
-  min-width: 100%;
+  max-width: 1000px;
 }
 
 th {
@@ -18,14 +23,19 @@ th {
   align-items: center;
 }
 
-.buttons-board {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  align-items: baseline;
+.empty-request-message {
+  text-align: center;
+  margin-top: 50px;
+  color: rgb(238, 32, 77);
 }
 
-.refresh-button {
+.buttons-board {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.action-button {
   cursor: pointer;
 }
 
