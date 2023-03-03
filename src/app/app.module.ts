@@ -7,17 +7,10 @@ import { FilterComponent } from './components/filter/filter.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { PopupFormComponent } from './components/popup-form/popup-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserService } from './services/user.service';
 import { NgxMaskModule } from 'ngx-mask';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -33,14 +26,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTableModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
+    MaterialModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [UserService],
