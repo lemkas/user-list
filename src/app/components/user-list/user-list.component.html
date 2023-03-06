@@ -51,7 +51,7 @@
     <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
     <tr mat-row *matRowDef="let row; columns: tableHeaders"></tr>
   </table>
-  <h3 class="empty-request-message" *ngIf="!this.users.length">
+  <h3 class="empty-request-message" *ngIf="!users.length">
     По вашему запросу ничего не найдено!
   </h3>
   <div class="buttons-board">

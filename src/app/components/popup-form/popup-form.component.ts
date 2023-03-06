@@ -79,7 +79,6 @@ export class PopupFormComponent implements OnInit {
     this.preparePhone();
     this.userService.createUser(this.createForm.value);
     this.dialog.closeAll();
-    console.log(this.createForm.value);
   }
 
   submitEditForm(): void {

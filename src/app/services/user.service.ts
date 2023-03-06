@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { IUser, POSITIONS } from '../models/user';
 import { data } from '../data/users';
 
@@ -12,8 +11,6 @@ export class UserService {
 
   users: Array<IUser> = data;
 
-  constructor() {}
-
   getPositions(): POSITIONS[] {
     return this.positions;
   }
@@ -22,11 +19,11 @@ export class UserService {
     this.users.push(user);
   }
 
-  deleteUser(id: string) {
+  deleteUser(id: string): void {
     this.users = this.users.filter((user: IUser) => user.id !== id);
   }
 
-  updateUser(editedUser: IUser) {
+  updateUser(editedUser: IUser): void {
     const oldUserIndex = this.users.findIndex(
       (user: IUser) => user.id === editedUser['id']
     );

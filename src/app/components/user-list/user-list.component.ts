@@ -76,7 +76,6 @@ export class UserListComponent implements OnInit {
       this.users = this.users.filter((user: IUser) => {
         return user.fio.toLowerCase().includes(val.toLowerCase());
       });
-      console.log(this.users.length);
     } else {
       this.users = this.userService.users;
     }
